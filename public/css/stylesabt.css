@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+html,
+body {
+  height: 100%;
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* about  */
+header.headr {
+  padding-top: 5rem;
+  padding-bottom: calc(10rem - 4.5rem);
+  background: #eb01a5;
+  /* background-image: url("https://images8.alphacoders.com/550/550542.jpg"); fallback */
+  background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(255, 203, 58, 0.73)), url('https://images8.alphacoders.com/550/550542.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+header.headr h1,
+header.headr .h1 {
+  font-size: 2.15rem;
+}
+
+@media (min-width: 992px) {
+  header.headr {
+      height: 100vh;
+      min-height: 40rem;
+      padding-top: 1.5rem;
+      padding-bottom: 0;
+  }
+  header.headr p {
+      font-size: 1.15rem;
+      font-weight: 500;
+  }
+  header.headr h1,
+  header.headr .h1 {
+      font-size: 3rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  header.headr h1,
+  header.headr .h1 {
+      font-size: 3.5rem;
+  }
+}
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+}
+
+.btn-link {
+  color: #FFF !important;
+}
+.btn-link:hover{
+  color: blue !important;
+}
