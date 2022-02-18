@@ -42,15 +42,35 @@ class PraktikumController extends Controller
             'frekuensi' => DB::table('knobs')->orderBy('waktu', 'desc')->first(),
         ]);
     }
+    // public function sendMotor($status)
+    // {
+    //     if ($status == 'start') {
+    //         $send = DB::table('motors')
+    //             ->where('id', 1)
+    //             ->update(['status_motor_forward' => 1,'status_motor_reverse' => 0]);
+    //     } else if ($status == 'stop') {
+    //         $send = DB::table('motors')
+    //             ->where('id', 1)
+    //             ->update(['status_motor_forward' => 0, 'status_motor_reverse' => 0]);
+    //     } else {
+    //         $send = DB::table('motors')
+    //             ->where('id', 1)
+    //             ->update(['status_motor_reverse' => 1,'status_motor_forward' => 0]);
+    //     }
+    //     if($send){
+    //         return response()->json(['status' => 'success']);
+    //     }
+    //     return response()->json(['status' => 'error']);
+    // }
     public function forward()
     {
         $sendForward = DB::table('motors')
             ->where('id', 1)
             ->update(['status_motor_forward' => 1]);
         if ($sendForward) {
-            return response()->json(['status' => 'success', 'message' => 'Berhasil menjalankan motor']);
+            return response()->json(['status' => 'success', 'message' => 'Berhasil forward motor']);
         }
-        return response()->json(['status' => 'failed']);
+        return response()->json(['status' => 'failed','message' => 'Gagal forward motor, ada kesalahan']);
     }
     public function reverse()
     {
@@ -58,9 +78,9 @@ class PraktikumController extends Controller
             ->where('id', 1)
             ->update(['status_motor_reverse' => 1]);
         if ($sendReverse) {
-            return response()->json(['status' => 'success']);
+            return response()->json(['status' => 'success', 'message' => 'Berhasil reverse motor']);
         }
-        return response()->json(['status' => 'failed']);
+        return response()->json(['status' => 'failed','message' => 'Gagal reverse motor, ada kesalahan']);
     }
     public function stop()
     {
@@ -68,9 +88,9 @@ class PraktikumController extends Controller
             ->where('id', 1)
             ->update(['status_motor_forward' => 0, 'status_motor_reverse' => 0]);
         if ($sendStop) {
-            return response()->json(['status' => 'success']);
+            return response()->json(['status' => 'success', 'message' => 'Berhasil stop motor']);
         }
-        return response()->json(['status' => 'failed']);
+        return response()->json(['status' => 'failed','message' => 'Ada kesalahan']);
     }
     public function lampu($id, $status)
     {
@@ -123,7 +143,7 @@ class PraktikumController extends Controller
         $data = DB::table('rpm')->select()->orderBy('Tanggal', 'desc')->limit(5)->get();
         $jml = DB::table('rpm')->select(['jml_lampi'])->count();
         foreach ($data as $d) {
-         return "
+            return "
         <tr>
         <td>" . $d->Frekuensi . "</td>
         <td>" . $jml . "</td>
