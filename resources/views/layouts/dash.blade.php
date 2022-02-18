@@ -29,6 +29,7 @@
     <link href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
     {{-- <link href="{{ asset('vendor/remixicon/remixicon.css') }}" rel="stylesheet"> --}}
     <link href="{{ asset('vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/simple-datatables/style.css') }}" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 
@@ -46,18 +47,26 @@
 </head>
 
 <body>
-    <main>
-        <div class="container">
-            @yield('container')
-        </div>
-    </main><!-- End #main -->
-
+    @include('partials.navbar')
+    @include('partials.sidebar')
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
+    <main id="main" class="main">
+        @yield('container')
+    </main>
+    @include('partials.modal')
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ asset('vendor/simple-datatables/simple-datatables.js') }}"></script>
     <script src="{{ asset('vendor/chart.js/chart.min.js') }}"></script>
 
     <!-- Template Main JS File -->

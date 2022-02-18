@@ -1,4 +1,4 @@
-@extends('layouts.utama')
+@extends('layouts.dash')
 
 @section('container')
     <section class="section dashboard">

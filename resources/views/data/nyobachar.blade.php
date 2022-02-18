@@ -30,8 +30,8 @@
         });
         $.getJSON("/grafik", function(data) {
             $.each((data), function(key, value) {
-                console.log(data);
-                myChart.options.data.labels.push(value[0]);
+                console.log(value);
+                myChart.options.data.labels.push('i');
                 myChart.options.data.datasets[0].data.push(value[1]);
             });
             myChart.update();
@@ -42,8 +42,8 @@
             $.getJSON("/grafik", function(data) {
                 myChart.options.data.datasets[0].data = [];
                 $.each((data), function(key, value) {
-                    console.log(value);
-                    myChart.options.data.labels.push(value[0].);
+                    console.log('bakekok');
+                    myChart.options.data.labels.push('i');
                     myChart.options.data.datasets[0].data.push(value[1]);
                 });
                 myChart.update();
