@@ -7,6 +7,7 @@ use App\Models\Praktikum;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -82,6 +83,30 @@ class DashboardController extends Controller
             'users' => User::where('hak','mahasiswa')->get(),
         ]);
     }
+    public function hasilprak()
+    {
+        return view('data.hasilprak',[
+            'title' => 'Hasil Praktikum',
+            'praktikum' => Praktikum::all()
+        ]);
+    }
+    public function datahasil($slug)
+    {
+        return view('data.datahasil',[
+            'title' => 'Data Hasil Praktikum',
+            'praktikum' => Praktikum::where('slug', $slug)->first(),
+            'users' => User::where('hak','mahasiswa')->get(),
+        ]);
+    }
+    public function dataHasilById($slug,$id)
+    {
+        return view('data.hasilbyid',[
+            'title' => 'Data Hasil Praktikum',
+            'praktikum' => Praktikum::where('slug', $slug)->first(),
+            'user' => User::where('id', $id)->first(),
+            'hasilprak' => DB::table('hasil_praks')->select('hasil_praks.*')->where('user_id', $id)->get(),
+        ]);
+    }
     public function upload()
     {
         return view('data.upload',[
@@ -89,5 +114,16 @@ class DashboardController extends Controller
             'nama' => Auth::user()->name,
             'nrp' => Auth::user()->nrp
         ]);
+    }
+    public function prosesUpload(Request $request)
+    {
+        $req = $request->validate([
+            'berkas' => 'required|file|mimes:pdf|max:2048',
+        ]);
+        $file = $request->file('file');
+        dd($file);
+        $nama_file = time()."_".$file->getClientOriginalName();
+        $tujuan_upload = 'data_file';
+        $file->move($tujuan_upload,$nama_file);
     }
 }

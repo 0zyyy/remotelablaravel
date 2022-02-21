@@ -30,14 +30,21 @@ Route::get('/forgot-password', function () {
 })->name('forgot-password');
 Route::middleware(['auth'])->group(function () {
     Route::get('/users', 'DashboardController@index')->name('users');
-    Route::get('/antrian', 'DashboardController@index')->name('antrian');
+    Route::get('/dashboard/antrian', 'AntrianController@index')->name('antrian');
+    Route::post('/dashboard/antrian', 'AntrianController@tambah');
+    Route::post('/dashboard/antrian', 'AntrianController@hapus');
     Route::get('/praktikum/{praktikum:slug}', 'PraktikumController@index')->name('praktikum');
     Route::get('/praktikum/{praktikum:slug}/mulaipraktikum', 'PraktikumController@mulaipraktikum')->name('mulaipramtikum');
     Route::get('/monitoringpraktikum', 'DashboardController@monitoring')->name('monitoring');
     Route::get('/data/laporanpraktikum', 'DashboardController@laporanpraktikum')->name('laporanpraktikum');
     Route::get('/lihatlaporan/{praktikum:slug}', 'DashboardController@lihatlaporan')->name('lihatlaporan');
-    Route::match(['get', 'post'], '/upload', 'DashboardController@upload')->name('upload');
-    Route::match(['get', 'post'], '/settings', 'DashboardController@settings')->name('settings');
+    Route::get('/data/hasilpraktikum', 'DashboardController@hasilprak')->name('hasilprak');
+    Route::get('/data/hasilpraktikum/{praktikum:slug}', 'DashboardController@datahasil');
+    Route::get('/data/hasilpraktikum/{praktikum:slug}/{user:id}', 'DashboardController@dataHasilById');
+    Route::get('/upload', 'DashboardController@upload');
+    Route::post('/upload', 'DashboardController@prosesUpload');
+    Route::get('/settings', 'DashboardController@settings');
+    Route::post('/settings', 'DashboardController@update');
     Route::post('/kontrolmotor/start', 'PraktikumController@forward')->name('forwardmotor');
     Route::post('/kontrolmotor/reverse', 'PraktikumController@reverse')->name('reversemotor');
     Route::post('/kontrolmotor/stop', 'PraktikumController@stop')->name('stopmotor');

@@ -1,5 +1,4 @@
 @extends('layouts.dash')
-
 @section('container')
     <div class="card-title">
         <h1 class="title">Upload</h1>
@@ -37,7 +36,7 @@
                     <label for="file" class="mb-2">Pilih File</label>
                     <input type="file" name="berkas" id="berkas" class="form-control">
                 </div>
-                <button class="btn btn-primary" id="uploadBtn" name="uploadBtn">UPLOAD</button>
+                <button type="submit" class="btn btn-primary" id="uploadBtn" name="uploadBtn">UPLOAD</button>
             </div>
         </form>
     </div>

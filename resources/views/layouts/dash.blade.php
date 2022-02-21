@@ -29,7 +29,7 @@
     <link href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
     {{-- <link href="{{ asset('vendor/remixicon/remixicon.css') }}" rel="stylesheet"> --}}
     <link href="{{ asset('vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('vendor/simple-datatables/style.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('vendor/simple-datatables/style.css') }}" rel="stylesheet"> --}}
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 
@@ -66,8 +66,17 @@
     <!-- Vendor JS Files -->
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('vendor/php-email-form/validate.js') }}"></script>
-    <script src="{{ asset('vendor/simple-datatables/simple-datatables.js') }}"></script>
+    {{-- <script src="{{ asset('vendor/simple-datatables/simple-datatables.js') }}"></script> --}}
     <script src="{{ asset('vendor/chart.js/chart.min.js') }}"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
 
     <!-- Template Main JS File -->
     <script src="{{ asset('js/main.js') }}"></script>

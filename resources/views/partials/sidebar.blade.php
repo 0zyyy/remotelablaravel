@@ -43,7 +43,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="/data/HasilPraktikum">
+            <a class="nav-link collapsed" href="/data/hasilpraktikum">
                 <i class="bi bi-file-earmark"></i>
                 <span>Hasil Praktikum</span>
             </a>
