@@ -38,20 +38,19 @@ class DashboardController extends Controller
             'message' => 'Anda tidak memiliki hak untuk mengakses halaman ini',
         ]);
     }
+    public function allPraktikum()
+    {
+        return view('praktikum.daftar',[
+            'title' => 'Daftar Praktikum',
+            'praktikums' => Praktikum::all(),
+        ]);
+    }
     public function settings()
     {
         return view('settings', [
             'title' => 'Pengaturan',
         ]);
     }
-    public function antrian()
-    {
-        return view('antrian', [
-            'title' => 'Antrian',
-            'antrian' => Antrian::all(),
-        ]);
-    }
-
     public function update(Request $request)
     {
         $id = auth()->user()->id;
@@ -120,10 +119,11 @@ class DashboardController extends Controller
         $req = $request->validate([
             'berkas' => 'required|file|mimes:pdf|max:2048',
         ]);
-        $file = $request->file('file');
+        $file = $request->file('berkas');
         dd($file);
         $nama_file = time()."_".$file->getClientOriginalName();
         $tujuan_upload = 'data_file';
         $file->move($tujuan_upload,$nama_file);
+        return redirect('/upload')->with('success', 'Berhasil Upload');
     }
 }

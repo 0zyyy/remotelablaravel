@@ -31,8 +31,10 @@ Route::get('/forgot-password', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/users', 'DashboardController@index')->name('users');
     Route::get('/dashboard/antrian', 'AntrianController@index')->name('antrian');
-    Route::post('/dashboard/antrian', 'AntrianController@tambah');
-    Route::post('/dashboard/antrian', 'AntrianController@hapus');
+    Route::get('/dashboard/users', 'DashboardController@users');
+    Route::get('/daftarpraktikum', 'DashboardController@allPraktikum');
+    Route::post('/dashboard/antrian/tambah', 'AntrianController@tambah');
+    Route::post('/dashboard/antrian/{user:id}', 'AntrianController@hapus');
     Route::get('/praktikum/{praktikum:slug}', 'PraktikumController@index')->name('praktikum');
     Route::get('/praktikum/{praktikum:slug}/mulaipraktikum', 'PraktikumController@mulaipraktikum')->name('mulaipramtikum');
     Route::get('/monitoringpraktikum', 'DashboardController@monitoring')->name('monitoring');
