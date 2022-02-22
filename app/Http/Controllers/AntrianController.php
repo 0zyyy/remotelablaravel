@@ -17,11 +17,18 @@ class AntrianController extends Controller
     }
     public function tambah(Request $request)
     {
-        $antrian = new Antrian;
-        $antrian->id_user = auth()->user()->id;
-        $antrian->id_praktikum = 2;
-        $antrian->nomor_antrian = Antrian::all()->where('id_praktikum','==',$antrian->id_praktikum)->count()+1;
-        $antrian->save();
+        $request->validate([
+            'nama' => 'required',
+            'nrp' => 'required',
+            'praktikum' => 'required',
+        ]);
+        if($request){
+            $antrian = new Antrian;
+            $antrian->id_user = auth()->user()->id;
+            $antrian->id_praktikum = $request->praktikum;
+            $antrian->nomor_antrian = Antrian::all()->where('id_praktikum','==',$antrian->id_praktikum)->count()+1;
+            $antrian->save();
+        }
         return redirect('/dashboard/antrian')->with('success','Berhasil menambahkan antrian');
     }
     public function hapus(User $user)
